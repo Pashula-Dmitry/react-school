@@ -44,7 +44,7 @@ const WatchVideoPage = () => {
       setVideoInfo(() => res[0]);
       setRelatedVideos(() => res[1]);
       setIsLoading(() => false);
-    }).catch((err) => {
+    }).catch(() => {
       setIsLoading(() => false);
     });
   }, [params.videoId]);
