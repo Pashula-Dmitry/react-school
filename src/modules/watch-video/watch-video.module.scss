@@ -13,7 +13,7 @@
 }
 
 .video {
-  flex-basis: 25%;
+  flex-basis: 30%;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -21,6 +21,7 @@
 .videoDescription {
   @include mixins.flex-between;
   margin-top: 24px;
+  align-items: flex-start;
 
 }
 
@@ -30,9 +31,37 @@
   row-gap: 16px;
 
   & .title {
-
+    @include mixins.title;
+    line-height: 24px;
   }
   & .description {
-
+    @include mixins.description;
+    line-height: 24px;
   }
+}
+
+.statistic {
+  display: flex;
+  column-gap: 27px;
+  align-items: center;
+  @include mixins.description;
+  line-height: 24px;
+}
+
+.likes {
+  font-weight: 400;
+  padding: 0;
+  & .likeIcon {
+    margin-bottom: 4px;
+  }
+}
+
+.statisticText {
+  font-family: vars.$fontSaira;
+  color: vars.$mainColorText;
+}
+
+.dateVideo {
+  display: flex;
+  column-gap: 11px;
 }

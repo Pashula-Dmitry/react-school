@@ -45,3 +45,7 @@
   color: vars.$disabled;
   pointer-events: none;
 }
+
+.disableRipple:hover, .disableRipple:focus, .disableRipple:active, {
+  background: inherit;
+}

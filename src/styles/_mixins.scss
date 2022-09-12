@@ -10,3 +10,15 @@
   outline: none;
   cursor: pointer;
 }
+
+@mixin title {
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+}
+
+@mixin description {
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+}

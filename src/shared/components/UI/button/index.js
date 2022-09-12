@@ -3,7 +3,7 @@ import cls from './button.module.scss';
 import classNames from 'classnames';
 
 const Button = (props) => {
-  const { children, className, variant = 'contained', onClick, disabled = false, ...attrs } = props;
+  const { children, className, variant = 'contained', onClick, disableRipple = false, disabled = false, ...attrs } = props;
 
   const classes = classNames(
     cls.button,
@@ -11,6 +11,7 @@ const Button = (props) => {
     { [cls.btnVariantOutlined]: variant === 'outlined' },
     { [cls.btnVariantContained]: variant === 'contained' },
     className,
+    { [cls.disableRipple]: disableRipple },
     { [cls.btnDisabled]: disabled },
   );
 
