@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { useStore } from '../../hooks/useStore';
 import { addSelect, removeSelect } from '../../store/actions';
 
-const VideoList = ({ directionList = 'row', videos, selectMode }) => {
+const VideoList = ({ directionList = 'row', videos, selectMode, link }) => {
   const { state: { selected }, dispatch } = useStore();
 
   const classes = classNames(
@@ -30,6 +30,7 @@ const VideoList = ({ directionList = 'row', videos, selectMode }) => {
       {
         videos && videos.map((item) => (
           <VideoCard
+            link={link}
             direction={directionList === 'row' ? 'column': 'row'}
             onAction={handleSelect}
             item={item}

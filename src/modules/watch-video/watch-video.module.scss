@@ -1,0 +1,38 @@
+@use './src/styles/mixins' as mixins;
+@use './src/styles/variables' as vars;
+
+.watchPage {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 48px;
+}
+
+.videoSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.video {
+  flex-basis: 25%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.videoDescription {
+  @include mixins.flex-between;
+  margin-top: 24px;
+
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  & .title {
+
+  }
+  & .description {
+
+  }
+}

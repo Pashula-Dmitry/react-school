@@ -1,0 +1,6 @@
+@use './src/styles/mixins' as mixins;
+@use './src/styles/variables' as vars;
+
+.frame {
+  pointer-events: auto;
+}

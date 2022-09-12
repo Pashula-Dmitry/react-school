@@ -6,11 +6,11 @@ import { ellipsString } from '../../helpers/ellipsString';
 import mountains from '../../../assets/images/mountain.jpg';
 
 const VideoCard = (props) => {
-  const {direction = 'column', onAction, selected = false, item} = props;
+  const {direction = 'column', onAction, selected = false, link, item} = props;
 
   const {id, snippet} = item;
 
-  const Wrapper = useMemo(() => direction === 'row' ? 'div' : Link, [direction]);
+  const Wrapper = useMemo(() => link ?  Link : 'div', [direction]);
   const classes = classNames(
     cls.link,
     { [cls.rowDirection]: direction === 'row' },

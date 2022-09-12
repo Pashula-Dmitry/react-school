@@ -5,9 +5,10 @@ import { useStore } from '../../shared/hooks/useStore';
 
 const VideoListPage = () => {
   const { state: { videos } } = useStore();
+
   return (
     <>
-      <VideoList videos={videos} selectMode={false} />
+      <VideoList videos={videos} selectMode={false} link={true} />
       <Outlet />
     </>
   );

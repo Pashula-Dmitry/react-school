@@ -100,7 +100,7 @@ const AddVideoPage = () => {
         </Button>
       </div>
       <div className={cls.listVideos}>
-        <VideoList directionList={'column'} videos={videos.items} selectMode={true} />
+        <VideoList directionList={'column'} videos={videos.items} selectMode={true} link={false} />
       </div>
     </Modal>
 
