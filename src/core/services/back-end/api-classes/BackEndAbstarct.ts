@@ -14,6 +14,8 @@ export abstract class BackEndAbstract {
   constructor() {}
 
   async create<T>(data: T): Promise<T> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return Storage.putValue(this.tableName, data);
   }
 
@@ -33,6 +35,8 @@ export abstract class BackEndAbstract {
   }
 
   async update<T>(data: T): Promise<T> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return Storage.putValue(this.tableName, data);
   }
 
