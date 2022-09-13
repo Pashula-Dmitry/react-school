@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import cls from './watch-video.module.scss';
-import VideoList from '../../shared/components/video-list';
-import Video from '../../shared/components/video';
-import {useParams} from 'react-router-dom';
-import Button from '../../shared/components/UI/button';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import {ReactComponent as LikeIcon} from '../../assets/icons/like.svg';
 import {ReactComponent as DateIcon} from '../../assets/icons/date.svg';
 import {fetcher} from '../../shared/helpers/fetch';
 import {apiKey, baseURL} from '../../shared/constants/api';
 import {formatter} from '../../shared/constants/local';
+import Button from '../../shared/components/UI/button';
+import VideoList from '../../shared/components/video-list';
+import Video from '../../shared/components/video';
+import cls from './watch-video.module.scss';
 
 const WatchVideoPage = () => {
   const [video, setVideoInfo] = useState({});
@@ -21,11 +21,12 @@ const WatchVideoPage = () => {
       return fetcher(`${baseURL}/videos`, {
         params: {
           key: apiKey,
-          part: ['contentDetails', 'snippet', 'statistics', 'liveStreamingDetails'],
+          part: ['contentDetails', 'snippet', 'statistics'],
           id: params.videoId,
         },
       });
     };
+
     const getRelatedVideos = async () => {
       return fetcher(`${baseURL}/search`, {
         params: {
@@ -47,6 +48,7 @@ const WatchVideoPage = () => {
     }).catch(() => {
       setIsLoading(() => false);
     });
+
   }, [params.videoId]);
 
 

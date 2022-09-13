@@ -15,9 +15,11 @@ const StoreContext = ({ children }) => {
 
   useEffect(() => {
     dispatch(getVideos());
+
     API.get('/api/videos').then((values) => {
       dispatch(setVideos(values?.length ? values.map((item) => {
         const url = item.url.split('/');
+
         return {
           id: {
             videoId: url[url.length - 1],

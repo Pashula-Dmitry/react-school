@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react';
-import VideoCard from '../video-card';
-
-import cls from './video-list.module.scss';
-import classNames from 'classnames';
 import { useStore } from '../../hooks/useStore';
+import classNames from 'classnames';
 import { addSelect, removeSelect } from '../../store/actions';
+import VideoCard from '../video-card';
+import cls from './video-list.module.scss';
 
 const VideoList = ({ directionList = 'row', videos, selectMode, link }) => {
   const { state: { selected }, dispatch } = useStore();
@@ -28,8 +27,9 @@ const VideoList = ({ directionList = 'row', videos, selectMode, link }) => {
   return (
     <div className={classes}>
       {
-        videos && videos.map((item) => (
+        videos && videos.map((item, idx) => (
           <VideoCard
+            key={idx}
             link={link}
             direction={directionList === 'row' ? 'column': 'row'}
             onAction={handleSelect}

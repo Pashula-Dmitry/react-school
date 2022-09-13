@@ -1,8 +1,7 @@
 import React from 'react';
 import { ReactComponent as Close } from '../../../assets/icons/close.svg';
-
-import cls from './modal.module.scss';
 import Portal from '../portal';
+import cls from './modal.module.scss';
 
 const Modal = (props) => {
   const { isOpen, onClose, title, children, renderButtons } = props;

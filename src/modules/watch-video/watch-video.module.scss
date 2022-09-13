@@ -46,6 +46,7 @@
   align-items: center;
   @include mixins.description;
   line-height: 24px;
+  flex-shrink: 0;
 }
 
 .likes {

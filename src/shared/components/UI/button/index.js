@@ -1,6 +1,6 @@
 import React from 'react';
-import cls from './button.module.scss';
 import classNames from 'classnames';
+import cls from './button.module.scss';
 
 const Button = (props) => {
   const { children, className, variant = 'contained', onClick, disableRipple = false, disabled = false, ...attrs } = props;

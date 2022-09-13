@@ -1,17 +1,17 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useStore } from '../../shared/hooks/useStore';
+import API from '../../core/services/API';
+import { debounce } from '../../shared/helpers/debounce';
+import { fetcher } from '../../shared/helpers/fetch';
+import { apiKey, baseURL } from '../../shared/constants/api';
+import { addVideos, clearSelects } from '../../shared/store/actions';
+import { ReactComponent as Search } from '../../assets/icons/search.svg';
 import Button from '../../shared/components/UI/button';
 import Input from '../../shared/components/UI/input';
 import Modal from '../../shared/components/modal';
-import cls from './add-video.module.scss';
-import { debounce } from '../../shared/helpers/debounce';
-import {fetcher} from '../../shared/helpers/fetch';
-import {apiKey, baseURL} from '../../shared/constants/api';
-import { ReactComponent as Search } from '../../assets/icons/search.svg';
 import VideoList from '../../shared/components/video-list';
-import API from '../../core/services/API';
-import {useStore} from '../../shared/hooks/useStore';
-import {addVideos, clearSelects} from '../../shared/store/actions';
+import cls from './add-video.module.scss';
 
 const AddVideoPage = () => {
   const [videos, setVideos] = useState(() => []);
@@ -21,10 +21,8 @@ const AddVideoPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     return () => dispatch(clearSelects());
   }, []);
-
 
   const handleClose = useCallback(() => {
     if (window.history.state && window.history.state.idx > 0) {
@@ -71,7 +69,6 @@ const AddVideoPage = () => {
       dispatch(addVideos(choicesItems));
       dispatch(clearSelects());
       navigate('/', {replace: true});
-
     });
   }, [selected]);
 

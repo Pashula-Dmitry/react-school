@@ -1,15 +1,13 @@
-import React from 'react';
-
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Plus} from '../../../assets/icons/plus.svg';
-
 import Button from '../UI/button';
 import cls from './fab.module.scss';
-import {useNavigate} from 'react-router-dom';
 
 const FAB = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => navigate('/add-video');
+  const handleClick = useCallback(() => navigate('/add-video'), []);
 
   return (
     <div className={cls.position}>

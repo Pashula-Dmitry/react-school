@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
-import cls from './video-card.module.scss';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { ellipsString } from '../../helpers/ellipsString';
 import mountains from '../../../assets/images/mountain.jpg';
+import { Link } from 'react-router-dom';
+import cls from './video-card.module.scss';
 
 const VideoCard = (props) => {
   const {direction = 'column', onAction, selected = false, link, item} = props;
-
   const {id, snippet} = item;
 
   const Wrapper = useMemo(() => link ?  Link : 'div', [direction]);
