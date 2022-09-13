@@ -43,6 +43,7 @@
 .btnDisabled {
   opacity: 0.38;
   color: vars.$disabled;
+  background-color: vars.$disabledBackground;
   pointer-events: none;
 }
 

@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useStore } from '../../shared/hooks/useStore';
 import API from '../../core/services/API';
-import { debounce } from '../../shared/helpers/debounce';
 import { fetcher } from '../../shared/helpers/fetch';
 import { apiKey, baseURL } from '../../shared/constants/api';
 import { addVideos, clearSelects } from '../../shared/store/actions';
@@ -32,7 +31,9 @@ const AddVideoPage = () => {
     }
   }, []);
 
-  const handleSearch = useCallback(debounce(async () => {
+  const handleSearch = useCallback(async (event) => {
+    event.preventDefault();
+
     if (search.length === 0) {
       return;
     }
@@ -48,7 +49,7 @@ const AddVideoPage = () => {
     });
 
     setVideos(data);
-  }, 200), [search]);
+  }, [search]);
 
 
   const onSave = useCallback(() => {
@@ -84,18 +85,20 @@ const AddVideoPage = () => {
         </>
       }
     >
-      <div className={cls.searchPanel}>
-        <Input
-          className={cls.search}
-          placeholder={'Please, enter your request'}
-          type="text"
-          onChange={(event) => setSearch(event.target.value)}
-          value={search}/>
-        <Button variant="contained" onClick={handleSearch}>
-          <Search />
-          <p>Search</p>
-        </Button>
-      </div>
+      <form onSubmit={handleSearch}>
+        <div className={cls.searchPanel}>
+          <Input
+            className={cls.search}
+            placeholder={'Please, enter your request'}
+            type="text"
+            onChange={(event) => setSearch(event.target.value)}
+            value={search}/>
+          <Button variant="contained" type={'submit'}>
+            <Search />
+            <p>Search</p>
+          </Button>
+        </div>
+      </form>
       <div className={cls.listVideos}>
         <VideoList directionList={'column'} videos={videos.items} selectMode={true} link={false} />
       </div>
