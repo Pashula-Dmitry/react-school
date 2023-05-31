@@ -17,6 +17,9 @@ const VideoCard = (props) => {
   );
 
   const renderImg = () => {
+    if (snippet?.imgURL) {
+      return snippet?.imgURL.url;
+    }
     if (!snippet.thumbnails) {
       return mountains;
     }

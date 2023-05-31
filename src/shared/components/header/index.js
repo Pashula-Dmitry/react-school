@@ -13,7 +13,7 @@ const Header = () => {
             <div className={cls.logoImg}>
               <img src={logo} alt="" />
             </div>
-            <h1 className={cls.logoText}>LANARS react school</h1>
+            <h1 className={cls.logoText}>YouTube</h1>
           </div>
         </Link>
       </div>

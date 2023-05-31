@@ -4,7 +4,7 @@ class Storage {
 
   db: any;
 
-  constructor(private dbName = 'LANARS-react-school') {
+  constructor(private dbName = 'Youtube clone') {
   }
 
   public async createObjectStore(tableNames: string[]) {

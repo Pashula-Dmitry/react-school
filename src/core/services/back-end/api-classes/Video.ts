@@ -2,7 +2,7 @@ import { ServerError } from '.';
 import { BackEndAbstract } from './BackEndAbstarct';
 
 export class Video extends BackEndAbstract {
-  readonly requiredFields = ['title', 'description', 'url', 'likes', 'date', 'duration'];
+  readonly requiredFields = ['title', 'description', 'url', 'likes', 'date', 'duration', 'imgURL'];
   readonly route = '/api/videos';
   readonly tableName = 'videos';
 

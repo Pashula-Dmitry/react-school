@@ -54,15 +54,15 @@ const AddVideoPage = () => {
 
   const onSave = useCallback(() => {
     const choicesItems = videos.items.filter((video) => selected.includes(video.id.videoId));
-
     const promises = choicesItems.map((item) => {
       return API.put('/api/videos', {
         title: item.snippet.title,
-        description: item.snippet.description,
+        description: item.snippet.description || '',
         url: `https://youtu.be/${item.id.videoId}`,
         likes: 16000,
         date: item.snippet.publishTime,
         duration: '3:32',
+        imgURL: item?.snippet?.thumbnails?.high,
       });
     });
 
