@@ -2,12 +2,12 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { ellipsString } from '../../helpers/ellipsString';
 import mountains from '../../../assets/images/mountain.jpg';
+import {ReactComponent as DeleteIcon} from '../../../assets/icons/cancel.svg';
 import { Link } from 'react-router-dom';
 import cls from './video-card.module.scss';
 
 const VideoCard = (props) => {
-  const {direction = 'column', onAction, selected = false, link, item} = props;
-  const {id, snippet} = item;
+  const {direction = 'column', onAction, selected = false, link, item, onDelete} = props;
 
   const Wrapper = useMemo(() => link ?  Link : 'div', [direction]);
   const classes = classNames(
@@ -17,32 +17,32 @@ const VideoCard = (props) => {
   );
 
   const renderImg = () => {
-    if (snippet?.imgURL) {
-      return snippet?.imgURL.url;
+    if (item?.imgURL) {
+      return item?.imgURL.url;
     }
-    if (!snippet.thumbnails) {
-      return mountains;
-    }
-    if (direction === 'row') {
-      return snippet.thumbnails?.default.url;
-    }
-    if (direction === 'column') {
-      return snippet.thumbnails?.medium?.url;
-    }
+
+    return null;
   };
 
   return (
     <Wrapper
-      to={`/watch/${id.videoId}`}
+      to={`/watch/${item.videoId}`}
       className={classes}
-      onClick={onAction !== undefined ? (event) => onAction(event, id.videoId) : null }>
+      onClick={onAction !== undefined ? (event) => onAction(event, item.videoId) : null }>
       <div className={cls.card} direction={direction}>
         <div className={cls.image}>
+          {
+            onDelete && <DeleteIcon onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onDelete(item.videoId);
+            }} className={cls.iconDelete}/>
+          }
           <img src={renderImg()} alt="" />
         </div>
         <div className={cls.text}>
-          <h3 className={cls.title}>{ellipsString(snippet.title, direction === 'row' ? 15 : 40)}</h3>
-          <p className={cls.description}>{ellipsString(snippet.description, direction === 'row' ? 20 : 60)}</p>
+          <h3 className={cls.title}>{ellipsString(item.title, direction === 'row' ? 15 : 40)}</h3>
+          <p className={cls.description}>{ellipsString(item.description, direction === 'row' ? 20 : 60)}</p>
         </div>
       </div>
     </Wrapper>

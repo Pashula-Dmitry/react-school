@@ -31,7 +31,6 @@ export class API {
       if (!data.id) {
         throw new ServerError(400, 'Property "id" is required');
       }
-      await this.errorRequest(route, data);
     } catch (error) {
       return this.errorRequest(route, data);
     }

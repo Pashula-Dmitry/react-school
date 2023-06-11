@@ -43,8 +43,18 @@ const WatchVideoPage = () => {
     const promises = [getVideoInfo(), getRelatedVideos()];
 
     Promise.all(promises).then((res) => {
+      console.log('res => ', res);
       setVideoInfo(() => res[0]);
-      setRelatedVideos(() => res[1]);
+      setRelatedVideos(() => res[1].items.map((video) => ({
+        title: video?.snippet.title,
+        videoId: video?.id.videoId,
+        description: video?.snippet.description || '',
+        url: `https://youtu.be/${video?.id.videoId}`,
+        likes: 3322,
+        date: video?.snippet.publishedAt,
+        duration: '3:32',
+        imgURL: video?.snippet?.thumbnails?.high,
+      })));
       setIsLoading(() => false);
     }).catch(() => {
       setIsLoading(() => false);
@@ -76,7 +86,7 @@ const WatchVideoPage = () => {
                     <LikeIcon className={cls.likeIcon} />
                     <span className={cls.statisticText}>{video.items[0].statistics.likeCount}</span>
                   </Button>
-                  <AddAlbum />
+                  <AddAlbum video={video} />
                   <div className={cls.dateVideo}>
                     <DateIcon />
                     <span className={cls.statisticText}>{formatter.format(new Date(video.items[0].snippet.publishedAt))}</span>
@@ -85,7 +95,7 @@ const WatchVideoPage = () => {
               </div>
             </section>
             <section className={cls.listOthersSection}>
-              <VideoList directionList={'column'} videos={relatedVideos.items} link={true} />
+              <VideoList directionList={'column'} videos={relatedVideos} link={true} />
             </section>
           </>
       }

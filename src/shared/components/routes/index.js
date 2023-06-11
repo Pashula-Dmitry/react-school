@@ -5,6 +5,7 @@ import VideoListPage from '../../../modules/video-list';
 import AddVideoPage from '../../../modules/add-video';
 import WatchVideoPage from '../../../modules/watch-video';
 import {Albums} from '../../../modules/albums';
+import {SingleAlbumPage} from "../../../modules/single-album-page";
 
 
 const Routes = () => {
@@ -16,7 +17,7 @@ const Routes = () => {
       ],
       },
       { path: '/albums', element: <Albums />},
-      { path: '/albums/:albumID', element: <VideoListPage /> },
+      { path: '/albums/:albumID', element: <SingleAlbumPage /> },
       { path: '/watch/:videoId', element: <WatchVideoPage /> },
       { path: '*', element: <NotFound text="Not found page"/> },
     ]},

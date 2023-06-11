@@ -5,7 +5,7 @@ import { addSelect, removeSelect } from '../../store/actions';
 import VideoCard from '../video-card';
 import cls from './video-list.module.scss';
 
-const VideoList = ({ directionList = 'row', videos, selectMode, link }) => {
+const VideoList = ({ directionList = 'row', videos, selectMode, link, onDelete }) => {
   const { state: { selected }, dispatch } = useStore();
 
   const classes = classNames(
@@ -23,18 +23,18 @@ const VideoList = ({ directionList = 'row', videos, selectMode, link }) => {
 
   }, [selected]);
 
-
   return (
     <div className={classes}>
       {
         videos && videos.map((item, idx) => (
           <VideoCard
+            onDelete={onDelete}
             key={idx}
             link={link}
             direction={directionList === 'row' ? 'column': 'row'}
             onAction={handleSelect}
             item={item}
-            selected={selectMode && selected.includes(item.id.videoId)}
+            selected={selectMode && selected.includes(item.videoId)}
           />
         ))
       }

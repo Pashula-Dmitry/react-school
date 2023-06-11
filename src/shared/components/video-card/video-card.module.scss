@@ -6,6 +6,8 @@
   display: flex;
   border-radius: 4px;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
   transition: transform 200ms;
   &[direction='column'] {
     flex-direction: column;
@@ -57,6 +59,16 @@
 }
 
 .image {
+  position: relative;
+  & .iconDelete {
+    color: white;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+  }
   & img {
     object-fit: cover;
     width: 100%;
@@ -70,6 +82,7 @@
 }
 
 .link {
+  position: relative;
   @include mixins.link;
 }
 

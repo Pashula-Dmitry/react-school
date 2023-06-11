@@ -20,22 +20,10 @@ const StoreContext = ({ children }) => {
     dispatch(getAlbums());
 
     API.get('/api/videos').then((values) => {
-      dispatch(setVideos(values?.length ? values.map((item) => {
-        const url = item.url.split('/');
-
-        return {
-          id: {
-            videoId: url[url.length - 1],
-          },
-          snippet: {
-            ...item,
-          },
-        };
-      }) : [] ));
+      dispatch(setVideos(values || []));
     });
 
     API.get('/api/albums').then((values) => {
-      console.log('values => ', values);
       dispatch(setAlbums(values));
     });
   }, []);
