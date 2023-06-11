@@ -5,7 +5,7 @@ import API from '../../core/services/API';
 import {fetcher} from '../../shared/helpers/fetch';
 import {apiKey, baseURL} from '../../shared/constants/api';
 import {clearSelects, setVideos} from '../../shared/store/actions';
-import {ReactComponent as Search} from '../../assets/icons/search.svg';
+import {ReactComponent as SearchIcon} from '../../assets/icons/search.svg';
 import Button from '../../shared/components/UI/button';
 import Input from '../../shared/components/UI/input';
 import Modal from '../../shared/components/modal';
@@ -97,7 +97,7 @@ const AddVideoPage = () => {
             onChange={(event) => setSearch(event.target.value)}
             value={search}/>
           <Button variant="contained" type={'submit'}>
-            <Search/>
+            <SearchIcon style={{ maxWidth: "22px", maxHeight: "22px" }} />
             <p>Search</p>
           </Button>
         </div>

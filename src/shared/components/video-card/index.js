@@ -41,7 +41,7 @@ const VideoCard = (props) => {
           <img src={renderImg()} alt="" />
         </div>
         <div className={cls.text}>
-          <h3 className={cls.title}>{ellipsString(item.title, direction === 'row' ? 15 : 40)}</h3>
+          <h3 className={cls.title}>{item.title}</h3>
           <p className={cls.description}>{ellipsString(item.description, direction === 'row' ? 20 : 60)}</p>
         </div>
       </div>
