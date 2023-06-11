@@ -14,7 +14,7 @@ export const AddAlbum = (props) => {
   const {isOpen: isOpenAddAlbum, closeModal, openModal} = useModal();
   const {state: {albums}, dispatch} = useStore();
   const [selectedAlbum, setSelectedAlbum] = useState(albums[0]?.id || -1);
-  console.log('video => ', video);
+
   const handleAddToAlbum = async (event) => {
     event.preventDefault();
 

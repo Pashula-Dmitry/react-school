@@ -9,7 +9,7 @@ import Button from '../../shared/components/UI/button';
 import VideoList from '../../shared/components/video-list';
 import Video from '../../shared/components/video';
 import cls from './watch-video.module.scss';
-import {AddAlbum} from "../../shared/components/add-album";
+import {AddAlbum} from '../../shared/components/add-album';
 
 const WatchVideoPage = () => {
   const [video, setVideoInfo] = useState({});
@@ -45,7 +45,7 @@ const WatchVideoPage = () => {
     Promise.all(promises).then((res) => {
       console.log('res => ', res);
       setVideoInfo(() => res[0]);
-      setRelatedVideos(() => res[1].items.map((video) => ({
+      setRelatedVideos(() => res[1].items?.map((video) => ({
         title: video?.snippet.title,
         videoId: video?.id.videoId,
         description: video?.snippet.description || '',
@@ -54,7 +54,7 @@ const WatchVideoPage = () => {
         date: video?.snippet.publishedAt,
         duration: '3:32',
         imgURL: video?.snippet?.thumbnails?.high,
-      })));
+      })) || []);
       setIsLoading(() => false);
     }).catch(() => {
       setIsLoading(() => false);
@@ -78,18 +78,18 @@ const WatchVideoPage = () => {
               </div>
               <div className={cls.videoDescription}>
                 <div className={cls.text}>
-                  <h3 className={cls.title}>{video.items[0].snippet.title}</h3>
-                  <p className={cls.description}>{video.items[0].snippet.description}</p>
+                  <h3 className={cls.title}>{video?.items?.[0]?.snippet?.title}</h3>
+                  <p className={cls.description}>{video?.items?.[0]?.snippet?.description}</p>
                 </div>
                 <div className={cls.statistic}>
                   <Button className={cls.likes} variant={'text'} disableRipple={true}>
                     <LikeIcon className={cls.likeIcon} />
-                    <span className={cls.statisticText}>{video.items[0].statistics.likeCount}</span>
+                    <span className={cls.statisticText}>{video?.items?.[0]?.statistics?.likeCount}</span>
                   </Button>
                   <AddAlbum video={video} />
                   <div className={cls.dateVideo}>
                     <DateIcon />
-                    <span className={cls.statisticText}>{formatter.format(new Date(video.items[0].snippet.publishedAt))}</span>
+                    <span className={cls.statisticText}>{formatter.format(new Date(video?.items?.[0]?.snippet?.publishedAt || Date.now()))}</span>
                   </div>
                 </div>
               </div>
