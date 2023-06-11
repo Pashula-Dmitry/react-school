@@ -1,4 +1,5 @@
 import React from 'react';
+import {ReactComponent as SearchIcon} from '../../../assets/icons/search.svg';
 import cls from "./search.module.scss";
 
 export const Search = (props) => {
@@ -10,7 +11,9 @@ export const Search = (props) => {
         <label className={cls.label}>
           <input className={cls.search} type="text" onChange={onChange} value={value} {...otherProps} />
         </label>
-        <button className={cls.btnSearch} type="submit">Search</button>
+        <button className={cls.btnSearch} type="submit">
+          <SearchIcon className={cls.svgSearch} />
+        </button>
       </form>
     </div>
 
