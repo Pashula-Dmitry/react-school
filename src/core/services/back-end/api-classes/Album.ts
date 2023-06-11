@@ -4,7 +4,7 @@ import { BackEndAbstract } from './BackEndAbstarct';
 export class Album extends BackEndAbstract {
   readonly route = '/api/albums';
   readonly tableName = 'albums';
-  readonly requiredFields = ['title', 'description'];
+  readonly requiredFields = ['title', 'description', 'videos'];
 
   constructor() {
     super();

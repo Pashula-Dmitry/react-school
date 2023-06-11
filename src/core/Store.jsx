@@ -1,13 +1,15 @@
 import React, {useEffect, useReducer} from 'react';
 import CtxStore from '../shared/contexts/store';
 import { reducer } from '../shared/store/reducer';
-import {getVideos, setVideos} from '../shared/store/actions';
+import {getVideos, setVideos, getAlbums, setAlbums} from '../shared/store/actions';
 import API from './services/API';
 
 const initialState = {
   videos: [],
+  albums: [],
   selected: [],
-  loading: false,
+  loadingVideo: false,
+  loadingAlbums: false,
 };
 
 const StoreContext = ({ children }) => {
@@ -15,6 +17,7 @@ const StoreContext = ({ children }) => {
 
   useEffect(() => {
     dispatch(getVideos());
+    dispatch(getAlbums());
 
     API.get('/api/videos').then((values) => {
       dispatch(setVideos(values?.length ? values.map((item) => {
@@ -29,6 +32,11 @@ const StoreContext = ({ children }) => {
           },
         };
       }) : [] ));
+    });
+
+    API.get('/api/albums').then((values) => {
+      console.log('values => ', values);
+      dispatch(setAlbums(values));
     });
   }, []);
 

@@ -1,0 +1,55 @@
+.icon {
+  max-width: 23px;
+}
+
+.btn {
+  max-height: 22px;
+}
+
+.btnAddToAlbum {
+  padding: 10px 15px;
+  margin-top: 20px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.customSelect {
+  position: relative;
+  display: inline-block;
+  min-width: 300px;
+}
+
+.customSelect select {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.customSelect::before {
+  content: "\25BC";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+}
+
+.customSelect select:focus {
+  outline: none;
+}
+
+.customSelect select:hover {
+  background-color: #e0e0e0;
+}

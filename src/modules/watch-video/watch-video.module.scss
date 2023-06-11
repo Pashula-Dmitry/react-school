@@ -43,7 +43,7 @@
 .statistic {
   display: flex;
   column-gap: 27px;
-  align-items: center;
+  align-items: self-start;
   @include mixins.description;
   line-height: 24px;
   flex-shrink: 0;

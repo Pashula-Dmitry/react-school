@@ -1,0 +1,36 @@
+@use '../../../styles/variables' as vars;
+
+.container {
+}
+
+.search {
+  padding: 0 10px;
+  outline: none;
+  height: 40px;
+  position: relative;
+  border: 1px solid vars.$borderSearch;
+  border-radius: 40px 0 0 40px;
+  min-width: 400px;
+
+}
+
+.label {
+}
+
+.btnSearch {
+  border: 1px solid #d3d3d3;
+  background-color: #f8f8f8;
+  border-radius: 0 40px 40px 0;
+  cursor: pointer;
+  height: 42px;
+  width: 64px;
+  margin: 0;
+}
+
+.formSearch {
+  display: contents;
+}
+
+.formSearch {
+  display: contents;
+}

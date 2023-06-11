@@ -37,7 +37,6 @@ class Storage {
     const tx = this.db.transaction(tableName, 'readonly');
     const store = tx.objectStore(tableName);
     const result = await store.getAll();
-    console.log('Get All Data', JSON.stringify(result));
     return result;
   }
 
@@ -45,7 +44,6 @@ class Storage {
     const tx = this.db.transaction(tableName, 'readwrite');
     const store = tx.objectStore(tableName);
     const result = await store.put(value);
-    console.log('Put Data ', JSON.stringify(result));
     return result;
   }
 
@@ -54,7 +52,6 @@ class Storage {
     const store = tx.objectStore(tableName);
     for (const value of values) {
       const result = await store.put(value);
-      console.log('Put Bulk Data ', JSON.stringify(result));
     }
     return this.getAllValue(tableName);
   }

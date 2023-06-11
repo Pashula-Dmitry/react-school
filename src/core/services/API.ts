@@ -22,14 +22,6 @@ export class API {
 
   async get(path: string) {
     const [route, query] = this.getParams(path);
-/*
-    try {
-      await this.errorRequest(route);
-    } catch (error) {
-      return this.errorRequest(route);
-    }
-
-    console.log(query);*/
     return await this.routes[route]?.read(new Query(query));
   }
 
@@ -48,11 +40,6 @@ export class API {
 
   async delete(path: string) {
     const [route, query] = this.getParams(path);
-    try {
-      await this.errorRequest(route);
-    } catch (error) {
-      return this.errorRequest(route);
-    }
     return await this.routes[route]?.delete(new Query(query));
   }
 

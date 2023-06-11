@@ -1,0 +1,51 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr {
+  cursor: pointer;
+}
+
+.button {
+  padding: 10px 15px;
+  outline: none;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.modalCreateField {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.fieldCreate {
+  width: 100%;
+}
+
+.description {
+  resize: none;
+  width: 100%;
+  min-height: 200px;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
+import classes from './notFound.module.scss';
 
-const NotFound = () => {
+export const NotFound = ({text}) => {
   return (
-    <div>
-      Not found page
+    <div className={classes.notFound}>
+      {text}
     </div>
   );
 };
 
-export default NotFound;

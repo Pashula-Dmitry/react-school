@@ -12,6 +12,12 @@ export class Query {
     this.sortBy = query.sortBy || this.sortBy;
     this.date = new Date(query.date) || this.date;
     this.search = query.search || this.search;
+
+    if (query.ids && !Array.isArray(query.ids)) {
+      this.ids = [query.ids].map((value: string | number) => +value) || this.ids;
+      return;
+    }
+
     this.ids = query.ids?.map((value: string | number) => +value) || this.ids;
   }
 

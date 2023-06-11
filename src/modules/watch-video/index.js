@@ -9,6 +9,7 @@ import Button from '../../shared/components/UI/button';
 import VideoList from '../../shared/components/video-list';
 import Video from '../../shared/components/video';
 import cls from './watch-video.module.scss';
+import {AddAlbum} from "../../shared/components/add-album";
 
 const WatchVideoPage = () => {
   const [video, setVideoInfo] = useState({});
@@ -75,6 +76,7 @@ const WatchVideoPage = () => {
                     <LikeIcon className={cls.likeIcon} />
                     <span className={cls.statisticText}>{video.items[0].statistics.likeCount}</span>
                   </Button>
+                  <AddAlbum />
                   <div className={cls.dateVideo}>
                     <DateIcon />
                     <span className={cls.statisticText}>{formatter.format(new Date(video.items[0].snippet.publishedAt))}</span>

@@ -50,3 +50,8 @@
 .disableRipple:hover, .disableRipple:focus, .disableRipple:active, {
   background: inherit;
 }
+
+.btnVariantContained:hover, .btnVariantContained:focus, .btnVariantContained:active,
+.btnVariantContained:hover, .btnVariantContained:focus, .btnVariantContained:active  {
+  background: vars.$brightBlue;
+}
